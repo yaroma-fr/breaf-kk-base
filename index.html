@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Бриф для договору з підрядником</title>
+    <link rel="icon" type="image" href="./favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <!-- HERO / HEADER -->
+      <section class="hero-card">
+        <p class="eyebrow">ADSAPIENCE</p>
+
+        <h1>Бриф для договору з підрядником</h1>
+
+        <p class="subtitle">
+          Заповніть дані для підготовки договору, додатку або додаткової угоди з
+          підрядником.
+        </p>
+      </section>
+
+      <!-- MAIN FORM -->
+      <form class="brief-form" id="briefForm">
+        <!-- 1. Загальна інформація -->
+
+        <section class="form-section" id="section-general">
+          <h2>1. Загальна інформація</h2>
+
+          <div class="form-row">
+            <label for="managerName">Ім'я Прізвище менеджера *</label>
+            <input
+              id="managerName"
+              name="managerName"
+              type="text"
+              placeholder="Ім'я Прізвище"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="managerEmail">Email менеджера *</label>
+            <input
+              id="managerEmail"
+              name="managerEmail"
+              type="email"
+              placeholder="name@adsapience.com"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="clientName">Клієнт *</label>
+            <input
+              id="clientName"
+              name="clientName"
+              type="text"
+              placeholder="Назва клієнта"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="projectName">Назва та номер проєкту *</label>
+            <input
+              id="projectName"
+              name="projectName"
+              type="text"
+              placeholder="Назва проєкту"
+              required
+            />
+          </div>
+          <div class="choice-card">
+            <div class="form-row">
+              <label>Який документ потрібно підготувати? *</label>
+
+              <div class="radio-group">
+                <label>
+                  <input
+                    type="radio"
+                    name="documentType"
+                    value="Договір"
+                    required
+                  />
+                  Договір
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="documentType"
+                    value="Додаток до рамкового договору"
+                  />
+                  Додаток до рамкового договору
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="documentType"
+                    value="Додаткова угода"
+                  />
+                  Додаткова угода
+                </label>
+
+                <label>
+                  <input type="radio" name="documentType" value="Інше" />
+                  Інше
+                </label>
+              </div>
+            </div>
+            <div class="form-row hidden" id="documentOtherRow">
+              <label for="documentOther">Вкажіть інший тип документа</label>
+              <input
+                id="documentOther"
+                name="documentOther"
+                type="text"
+                placeholder="Інший тип документа"
+              />
+            </div>
+          </div>
+
+          <div class="choice-card">
+            <div class="form-row">
+              <label>Юридична особа зі сторони Adsapience *</label>
+
+              <div class="radio-group">
+                <label>
+                  <input
+                    type="radio"
+                    name="legalEntity"
+                    value="ТОВ «ТОТАЛ МАРКЕТИНГ ЕДЖЕНСІ»"
+                    required
+                  />
+                  ТОВ «ТОТАЛ МАРКЕТИНГ ЕДЖЕНСІ»
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="legalEntity"
+                    value="ТОВ «ФЕАР РІТЕЙЛ»"
+                  />
+                  ТОВ «ФЕАР РІТЕЙЛ»
+                </label>
+
+                <label>
+                  <input type="radio" name="legalEntity" value="ТОВ «МІІ»" />
+                  ТОВ «МІІ»
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="legalEntity"
+                    value="ТОВ «СЕРВІС ХАБ»"
+                  />
+                  ТОВ «СЕРВІС ХАБ»
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="legalEntity"
+                    value="ТОВ «АДВЕЙС ЛІДЕР»"
+                  />
+                  ТОВ «АДВЕЙС ЛІДЕР»
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="legalEntity"
+                    value="Adsapience s.r.o"
+                  />
+                  Adsapience s.r.o
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="legalEntity"
+                    value="Внутрішній ФОП"
+                  />
+                  Внутрішній ФОП
+                </label>
+
+                <label>
+                  <input type="radio" name="legalEntity" value="Інше" />
+                  Інше
+                </label>
+              </div>
+            </div>
+            <div class="form-row hidden" id="fopNameRow">
+              <label for="fopName">Назва ФОП</label>
+              <input
+                id="fopName"
+                name="fopName"
+                type="text"
+                placeholder="ФОП Іваненко Іван Іванович"
+              />
+            </div>
+
+            <div class="form-row hidden" id="legalOtherRow">
+              <label for="legalOther">Інша юридична особа</label>
+              <input
+                id="legalOther"
+                name="legalOther"
+                type="text"
+                placeholder="Вкажіть юридичну особу"
+              />
+            </div>
+
+            <div
+              class="form-row textarea-row hidden"
+              id="nonFrontAgencyReasonRow"
+            >
+              <label for="nonFrontAgencyReason">
+                Причина закриття не на фронтальне агентство
+                <span class="hint">(Тотал, ФР, МІІ)</span>
+              </label>
+
+              <textarea
+                id="nonFrontAgencyReason"
+                name="nonFrontAgencyReason"
+                placeholder="Опишіть причину вибору не фронтального агентства"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="choice-card">
+            <div class="form-row">
+              <label>Мета послуг за документом *</label>
+
+              <div class="radio-group purpose-radio">
+                <label>
+                  <input
+                    type="radio"
+                    name="documentPurpose"
+                    value="Контроль"
+                    required
+                  />
+                  Контроль
+                </label>
+
+                <label>
+                  <input type="radio" name="documentPurpose" value="Оплата" />
+                  Оплата
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Інформація про підрядника -->
+        <section class="form-section" id="section-contractor">
+          <h2>2. Інформація про підрядника</h2>
+
+          <div class="form-row textarea-row">
+            <label for="activityName">
+              В межах якої активності надаються послуги?
+            </label>
+
+            <textarea
+              id="activityName"
+              name="activityName"
+              placeholder="Назва заходу, рекламної кампанії або короткий опис активності"
+            ></textarea>
+          </div>
+
+          <div class="form-row textarea-row">
+            <label for="activityLocation">
+              Місце надання послуг (адреса локації)
+              <span class="hint">(якщо застосовується)</span>
+            </label>
+
+            <textarea
+              id="activityLocation"
+              name="activityLocation"
+              placeholder="Адреса локації"
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="activityDate">
+              Дата проведення активності
+              <span class="hint">(якщо застосовується)</span>
+            </label>
+            <input id="activityDate" name="activityDate" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="contractorName"
+              >Повна юридична назва підрядника / ПІБ ФОП *</label
+            >
+            <input
+              id="contractorName"
+              name="contractorName"
+              type="text"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label>Чи є підрядник платником ПДВ? *</label>
+
+            <div class="radio-group horizontal">
+              <label>
+                <input type="radio" name="contractorVat" value="Так" required />
+                Так
+              </label>
+
+              <label>
+                <input type="radio" name="contractorVat" value="Ні" />
+                Ні
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="worksectionLink"
+              >Посилання на гілку Worksection де перевіряли підрядника *
+            </label>
+            <input
+              id="worksectionLink"
+              name="worksectionLink"
+              type="text"
+              placeholder="https://..."
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="contractorEmail">Контактний Email підрядника *</label>
+            <input
+              id="contractorEmail"
+              name="contractorEmail"
+              type="email"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label for="contractorPhone">Контактний телефон підрядника *</label>
+            <input
+              id="contractorPhone"
+              name="contractorPhone"
+              type="tel"
+              placeholder="+380..."
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <label>Чи працювали з цим підрядником раніше? *</label>
+
+            <div class="radio-group horizontal">
+              <label>
+                <input type="radio" name="workedBefore" value="Так" required />
+                Так
+              </label>
+
+              <label>
+                <input type="radio" name="workedBefore" value="Ні" required />
+                Ні
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="workedBefore"
+                  value="Не знаю"
+                  required
+                />
+                Не знаю
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row hidden" id="workedBeforeDetailsRow">
+            <label for="workedBeforeDetails">
+              Номер і дата договору або останній проєкт
+            </label>
+            <input
+              id="workedBeforeDetails"
+              name="workedBeforeDetails"
+              type="text"
+            />
+          </div>
+
+          <div class="form-row">
+            <label>Чи підрядник працює у “Вчасно”? *</label>
+
+            <div class="radio-group horizontal">
+              <label>
+                <input type="radio" name="vchasno" value="Так" required />
+                Так
+              </label>
+
+              <label>
+                <input type="radio" name="vchasno" value="Ні" required />
+                Ні
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row hidden" id="vchasnoEmailRow">
+            <label for="vchasnoEmail">Email підрядника у Вчасно</label>
+            <input id="vchasnoEmail" name="vchasnoEmail" type="email" />
+          </div>
+        </section>
+
+        <!-- 3. Що саме має зробити підрядник -->
+        <section class="form-section" id="section-services-task">
+          <h2>3. Що саме має зробити підрядник</h2>
+
+          <div class="form-row">
+            <label for="serviceShortName"
+              >Коротка назва послуг / робіт (приклад: розробка дизайну) *</label
+            >
+            <input
+              id="serviceShortName"
+              name="serviceShortName"
+              type="text"
+              required
+            />
+          </div>
+
+          <div class="form-row textarea-row">
+            <label for="serviceDescription"
+              >Детальний опис послуг / робіт *
+              <span class="hint">
+                ( Опишіть простими словами, що саме робить підрядник, який
+                результат має передати, у яких форматах, обсягах або кількості)
+              </span>
+            </label>
+            <textarea
+              id="serviceDescription"
+              name="serviceDescription"
+              required
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- 4. ТЗ/Замовлення Клієнта/Додаток -->
+        <section class="form-section" id="section-services">
+          <h2>4. ТЗ/Замовлення Клієнта/Додаток</h2>
+
+          <div class="form-row textarea-row">
+            <label for="serviceExtation"
+              >За яким ТЗ/Додатком/Замовлення плануємо закриватись
+              <span class="hint"> (у разі наявності інформації) </span>
+            </label>
+            <textarea
+              id="serviceExtation"
+              name="serviceExtation"
+              required
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- 5. Строки виконання -->
+        <section class="form-section" id="section-timing">
+          <h2>5. Строки виконання</h2>
+
+          <div class="form-row">
+            <label for="startDate">Дата початку *</label>
+            <input id="startDate" name="startDate" type="date" required />
+          </div>
+
+          <div class="form-row">
+            <label for="finishDate">Дата завершення *</label>
+            <input id="finishDate" name="finishDate" type="date" required />
+          </div>
+
+          <div class="form-row">
+            <label>Формат виконання *</label>
+
+            <div class="radio-group">
+              <label>
+                <input
+                  type="radio"
+                  name="timingFormat"
+                  value="Один етап і один акт"
+                  required
+                />
+                Один етап і один акт
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="timingFormat"
+                  value="Кілька етапів і окремий акт по кожному етапу"
+                />
+                Кілька етапів і окремий акт по кожному етапу
+              </label>
+
+              <label>
+                <input type="radio" name="timingFormat" value="Інше" />
+                Інше
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row hidden" id="timingFormatOtherRow">
+            <label for="timingFormatOther">Інший формат виконання</label>
+            <input
+              id="timingFormatOther"
+              name="timingFormatOther"
+              type="text"
+            />
+          </div>
+        </section>
+
+        <!-- Табличка - етапи робіт -->
+        <section class="form-section hidden" id="section-stages">
+          <h2>Етапи робіт</h2>
+
+          <div class="table-actions">
+            <button type="button" class="secondary-button" id="addStageBtn">
+              + Додати етап
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table id="stagesTable">
+              <thead>
+                <tr>
+                  <th>Етап</th>
+                  <th>Що виконується</th>
+                  <th>Період</th>
+                  <th>Сума</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="stage-number">1</td>
+                  <td>
+                    <textarea
+                      name="stageWork[]"
+                      placeholder="Опишіть роботи"
+                    ></textarea>
+                  </td>
+                  <td>
+                    <input
+                      name="stagePeriod[]"
+                      type="text"
+                      placeholder="01.09 - 15.09"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      name="stageAmount[]"
+                      type="text"
+                      placeholder="10000"
+                    />
+                  </td>
+                  <td>
+                    <button type="button" class="icon-button remove-row">
+                      ×
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 6. Вартість і порядок оплати -->
+        <section class="form-section" id="section-cost">
+          <h2>6. Вартість і порядок оплати</h2>
+
+          <div class="choice-card">
+            <h3>Вартість послуг з українським підрядником</h3>
+
+            <div class="form-row">
+              <label for="costNoVat">Загальна вартість без ПДВ *</label>
+              <input id="costNoVat" name="costNoVat" type="text" required />
+            </div>
+
+            <div class="form-row hidden" id="vatAmountRow">
+              <label for="vatAmount">ПДВ</label>
+              <input id="vatAmount" name="vatAmount" type="text" />
+            </div>
+
+            <div class="form-row hidden" id="costWithVatRow">
+              <label for="costWithVat">Загальна вартість з ПДВ</label>
+              <input id="costWithVat" name="costWithVat" type="text" />
+            </div>
+
+            <div class="form-row">
+              <label for="currency">Валюта *</label>
+              <input
+                id="currency"
+                name="currency"
+                type="text"
+                placeholder="UAH, USD, EUR"
+                required
+              />
+            </div>
+          </div>
+          <div class="choice-card">
+            <h3>Вартість послуг з іноземним підрядником</h3>
+            <div class="form-row">
+              <label for="foreignCost">Загальна вартість послуг:</label>
+              <input id="foreignCost" name="foreignCost" type="text" />
+            </div>
+
+            <div class="form-row">
+              <label for="foreignCurrency">Валюта</label>
+              <input
+                id="foreignCurrency"
+                name="foreignCurrency"
+                type="text"
+                placeholder="USD, EUR, CZK"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Табличка- порядок оплати -->
+        <section class="form-section" id="section-payments">
+          <h2>Порядок оплати</h2>
+
+          <div class="table-actions">
+            <button type="button" class="secondary-button" id="addPaymentBtn">
+              + Додати платіж
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table id="paymentsTable">
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th>Сума</th>
+                  <th>Дата</th>
+                  <th>Коментар</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td class="payment-number">1</td>
+                  <td>
+                    <input
+                      name="paymentAmount[]"
+                      type="text"
+                      placeholder="10000"
+                    />
+                  </td>
+                  <td>
+                    <input name="paymentDate[]" type="date" />
+                  </td>
+                  <td>
+                    <textarea
+                      name="paymentComment[]"
+                      placeholder="Коментар"
+                    ></textarea>
+                  </td>
+                  <td>
+                    <button type="button" class="icon-button remove-row">
+                      ×
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 7. Інтелектуальна власність -->
+        <section class="form-section" id="section-ip">
+          <h2>7. Інтелектуальна власність</h2>
+
+          <div class="form-row checkbox-row">
+            <label>Чи створює підрядник щось із наведеного нижче?</label>
+
+            <div class="checkbox-grid">
+              <label
+                ><input type="checkbox" name="ipItems" value="Дизайн" />
+                Дизайн</label
+              >
+              <label
+                ><input type="checkbox" name="ipItems" value="Фото" />
+                Фото</label
+              >
+              <label
+                ><input type="checkbox" name="ipItems" value="Відео" />
+                Відео</label
+              >
+              <label
+                ><input type="checkbox" name="ipItems" value="Тексти" />
+                Тексти</label
+              >
+              <label
+                ><input type="checkbox" name="ipItems" value="Музика" />
+                Музика</label
+              >
+              <label
+                ><input type="checkbox" name="ipItems" value="Сценарії" />
+                Сценарії</label
+              >
+              <label
+                ><input type="checkbox" name="ipItems" value="Концепції" />
+                Концепції</label
+              >
+              <label
+                ><input type="checkbox" name="ipItems" value="Презентації" />
+                Презентації</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="ipItems"
+                  value="Програмне забезпечення"
+                />
+                Програмне забезпечення</label
+              >
+              <label
+                ><input type="checkbox" name="ipItems" value="Інший креатив" />
+                Інший креатив</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="ipItems"
+                  value="Ні, нічого з цього"
+                />
+                Ні, нічого з цього</label
+              >
+            </div>
+          </div>
+          <div id="ipDetailsBlock" class="hidden">
+            <div class="form-row textarea-row">
+              <label for="ipDescription">Якщо так, що саме створюється?</label>
+              <textarea id="ipDescription" name="ipDescription"></textarea>
+            </div>
+
+            <div class="form-row textarea-row">
+              <label for="usageRestrictions"
+                >Чи є обмеження щодо використання результату?</label
+              >
+              <textarea
+                id="usageRestrictions"
+                name="usageRestrictions"
+                placeholder="Строк, територія, канали використання, заборона редагування тощо"
+              ></textarea>
+            </div>
+
+            <div class="form-row textarea-row">
+              <label for="clientRights"
+                >Чи потрібні авторські права клієнту(банку)?</label
+              >
+              <textarea id="clientRights" name="clientRights"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. Додаткові та ризикові умови -->
+        <section class="form-section" id="section-risks">
+          <h2>8. Додаткові та ризикові умови</h2>
+
+          <div class="form-row textarea-row">
+            <label for="riskConditions">
+              Будь-які домовленості з підрядником, які обов’язково потрібно
+              включити в документ *
+            </label>
+
+            <textarea id="riskConditions" name="riskConditions"></textarea>
+          </div>
+        </section>
+
+        <!-- 9. Файли / посилання -->
+        <section class="form-section" id="section-files">
+          <h2>9. Файли та посилання</h2>
+
+          <div class="form-row checkbox-row">
+            <label>
+              Чи наявний будь-який документ з підрядником, що описує або
+              деталізує послугу? *
+            </label>
+
+            <div class="checkbox-grid">
+              <label
+                ><input
+                  type="checkbox"
+                  name="fileLinks"
+                  value="Комерційна пропозиція"
+                />
+                Комерційна пропозиція</label
+              >
+              <label
+                ><input type="checkbox" name="fileLinks" value="Кошторис" />
+                Кошторис</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="fileLinks"
+                  value="Технічне завдання"
+                />
+                Технічне завдання</label
+              >
+              <label
+                ><input type="checkbox" name="fileLinks" value="Презентація" />
+                Презентація</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="fileLinks"
+                  value="Схема, візуалізація"
+                />
+                Схема, візуалізація</label
+              >
+              <label
+                ><input type="checkbox" name="fileLinks" value="Дизайн макет" />
+                Дизайн макет</label
+              >
+              <label
+                ><input type="checkbox" name="fileLinks" value="Відсутній" />
+                Відсутній</label
+              >
+            </div>
+          </div>
+
+          <div class="form-row textarea-row">
+            <label for="additionalLinks"
+              >Посилання або коментарі до файлів *</label
+            >
+            <textarea
+              id="additionalLinks"
+              name="additionalLinks"
+              placeholder="Вставте посилання на Worksection, SharePoint, Google Drive або інші матеріали"
+              required
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- ACTIONS -->
+        <!-- <div class="form-actions">
+                <button type="button" class="secondary-button" id="saveDraftBtn">
+                    Зберегти чернетку
+                </button>
+
+                <button type="button" class="secondary-button" id="previewBtn">
+                    Переглянути бриф
+                </button>
+
+                <button type="submit" class="primary-button">
+                    Сформувати бриф
+                </button>
+            </div> -->
+        <div class="form-actions">
+          <button type="button" class="primary-button" id="downloadWordBtn">
+            Завантажити Word
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
