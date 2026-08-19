@@ -107,16 +107,7 @@ function initDynamicFields() {
       radio.addEventListener("change", function () {
         const value = getRadioValue("legalEntity");
 
-        showElementById("fopNameRow", value === "Внутрішній ФОП");
-
         showElementById("legalOtherRow", value === "Інше");
-
-        const needReason =
-          value === "ТОВ «СЕРВІС ХАБ»" ||
-          value === "ТОВ «АДВЕЙС ЛІДЕР»" ||
-          value === "Внутрішній ФОП";
-
-        showElementById("nonFrontAgencyReasonRow", needReason);
       });
     });
 
@@ -200,7 +191,6 @@ function handleIpDetailsVisibility() {
   if (!shouldShowDetails) {
     const ipDescription = document.getElementById("ipDescription");
     const usageRestrictions = document.getElementById("usageRestrictions");
-    const clientRights = document.getElementById("clientRights");
 
     if (ipDescription) {
       ipDescription.value = "";
@@ -208,10 +198,6 @@ function handleIpDetailsVisibility() {
 
     if (usageRestrictions) {
       usageRestrictions.value = "";
-    }
-
-    if (clientRights) {
-      clientRights.value = "";
     }
   }
 }
@@ -366,17 +352,11 @@ function collectBriefData() {
 
     legal: {
       legalEntity: getLegalEntity(),
-      fopName: getValue("fopName"),
       legalOther: getValue("legalOther"),
-      nonFrontAgencyReason: getValue("nonFrontAgencyReason"),
-      documentPurpose: getRadioValue("documentPurpose"),
       legalEntityType: getRadioValue("legalEntity"),
     },
 
     contractor: {
-      activityName: getValue("activityName"),
-      activityLocation: getValue("activityLocation"),
-      activityDate: getValue("activityDate"),
       contractorName: getValue("contractorName"),
       contractorVat: getRadioValue("contractorVat"),
       worksectionLink: getValue("worksectionLink"),
@@ -391,7 +371,6 @@ function collectBriefData() {
     services: {
       serviceShortName: getValue("serviceShortName"),
       serviceDescription: getValue("serviceDescription"),
-      clientContractReference: getValue("clientContractReference"),
       serviceExtation: getValue("serviceExtation"),
     },
 
@@ -404,13 +383,10 @@ function collectBriefData() {
     stages: collectStages(),
 
     cost: {
-      costUkr: getValue("costUkr"),
       costNoVat: getValue("costNoVat"),
       vatAmount: getValue("vatAmount"),
       costWithVat: getValue("costWithVat"),
       currency: getValue("currency"),
-      foreignCost: getValue("foreignCost"),
-      foreignCurrency: getValue("foreignCurrency"),
     },
 
     payments: collectPayments(),
@@ -419,7 +395,6 @@ function collectBriefData() {
       ipItems: collectCheckedValues("ipItems"),
       ipDescription: getValue("ipDescription"),
       usageRestrictions: getValue("usageRestrictions"),
-      clientRights: getValue("clientRights"),
     },
 
     risks: {
@@ -445,10 +420,6 @@ function getDocumentType() {
 
 function getLegalEntity() {
   const value = getRadioValue("legalEntity");
-
-  if (value === "Внутрішній ФОП") {
-    return "Внутрішній ФОП: " + getValue("fopName");
-  }
 
   if (value === "Інше") {
     return getValue("legalOther");
@@ -575,7 +546,7 @@ function buildWordDocumentHtml(data) {
         }
 
         h2 {
-            background: #E6D9B9;
+            background: #f3f2f0;
             color: #263339;
             padding: 8px;
             font-size: 14pt;
@@ -656,16 +627,7 @@ function buildWordDocumentHtml(data) {
             <td class="label">Юридична особа зі сторони Adsapience</td>
             <td class="value">${escapeHtml(data.legal.legalEntity)}</td>
         </tr>
-        ${
-          data.legal.fopName
-            ? `
-                <tr>
-                    <td class="label">Назва ФОП</td>
-                    <td class="value">${escapeHtml(data.legal.fopName)}</td>
-                </tr>
-        `
-            : ""
-        }
+       
         ${
           data.legal.legalOther
             ? `
@@ -677,44 +639,12 @@ function buildWordDocumentHtml(data) {
             : ""
         }
 
-        ${
-          ["ТОВ «СЕРВІС ХАБ»", "ТОВ «АДВЕЙС ЛІДЕР»", "Внутрішній ФОП"].includes(
-            data.legal.legalEntityType,
-          )
-            ? `
-    <tr>
-        <td class="label">Причина закриття не на фронтальне агентство</td>
-        <td class="value">${escapeHtml(data.legal.nonFrontAgencyReason)}</td>
-    </tr>
-`
-            : ""
-        }
-     
-
-        <tr>
-            <td class="label">Мета послуг за документом</td>
-            <td class="value">${escapeHtml(data.legal.documentPurpose)}</td>
-        </tr>
     </table>
 
     <h2>2. Інформація про підрядника</h2>
 
     <table>
-        <tr>
-            <td class="label">Активність</td>
-            <td class="value">${escapeHtml(data.contractor.activityName)}</td>
-        </tr>
-
-        <tr>
-            <td class="label">Місце надання послуг</td>
-            <td class="value">${escapeHtml(data.contractor.activityLocation)}</td>
-        </tr>
-
-        <tr>
-            <td class="label">Дата проведення активності</td>
-            <td class="value">${escapeHtml(data.contractor.activityDate)}</td>
-        </tr>
-
+      
         <tr>
             <td class="label">Повна юридична назва підрядника / ПІБ ФОП</td>
             <td class="value">${escapeHtml(data.contractor.contractorName)}</td>
@@ -778,11 +708,12 @@ function buildWordDocumentHtml(data) {
 
     </table>
 
-    <h2>4. ТЗ/Замовлення Клієнта/Додаток</h2>
+    <h2>4. Зв’язок із договором/додатком з клієнтом</h2>
 
     <table>
         <tr>
-            <td class="label">За яким ТЗ/Додатком/Замовлення плануємо закриватись (у разі наявності інформації)</td>
+            <td class="label">Як відображені послуги з клієнтом
+(вкажіть пункт/и з клієнтом де вказані послуги, що надаються підрядником)</td>
             <td class="value">${escapeHtml(data.services.serviceExtation)}</td>
         </tr>
     </table>
@@ -817,8 +748,6 @@ function buildWordDocumentHtml(data) {
 
     <h2>6. Вартість і порядок оплати</h2>
 
-    <h3>Вартість послуг з українським підрядником</h3>
-
     <table>
         <tr>
             <td class="label">Загальна вартість без ПДВ</td>
@@ -847,20 +776,7 @@ function buildWordDocumentHtml(data) {
         </tr>
     </table>
     
-    <h3>Вартість послуг з іноземним підрядником</h3>
     
-    <table>
-        <tr>
-            <td class="label">Загальна вартість послуг</td>
-            <td class="value">${escapeHtml(data.cost.foreignCost)}</td>
-        </tr>
-
-        <tr>
-            <td class="label">Валюта</td>
-            <td class="value">${escapeHtml(data.cost.foreignCurrency)}</td>
-        </tr>
-    </table>
-
     <h2>Порядок оплати</h2>
 
     ${buildPaymentsWordTable(data.payments)}
@@ -885,11 +801,6 @@ function buildWordDocumentHtml(data) {
         <tr>
             <td class="label">Чи є обмеження щодо використання результату</td>
             <td class="value">${escapeHtml(data.intellectualProperty.usageRestrictions)}</td>
-        </tr>
-
-        <tr>
-            <td class="label">Чи потрібні авторські права клієнту (банку)</td>
-            <td class="value">${escapeHtml(data.intellectualProperty.clientRights)}</td>
         </tr>
     `
          : ""
